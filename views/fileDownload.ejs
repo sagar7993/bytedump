@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Download Files</title>
+  <% include templates/includes.ejs %>
+</head>
+<body>
+<center>
+  <% include templates/nav.ejs %>
+  <% include templates/loading.ejs %>
+  <script>
+    var files = <%-JSON.stringify(files)%>;
+    console.log(files);
+  </script>
+  <h3>Welcome to ByteDump</h3>
+  <br/>
+  <div class="row width-70-pc" align="center">
+    <ul class="collection">
+      <% files.forEach(function(file) { %>
+        <!-- <li class="collection-item avatar hoverable cursor-pointer" onclick='download("<%=file.path%><%=file.fileName%>")'> -->
+        <li class="collection-item avatar hoverable cursor-pointer download-file"
+          id='<%=file.path%><%=file.fileName%>' data-file-name='<%=file.fileName%>'>
+          <i class="material-icons circle margin-top-12px <% if(file.fileType !== 'folder') { %>red <% } %>">
+            <% if(file.fileType == 'folder') { %>
+            folder
+            <% } else if(file.fileType == 'video') { %>
+            videocam
+            <% } else if(file.fileType == 'audio') { %>
+            audiotrack
+            <% } else if(file.fileType == 'image') { %>
+            perm_media
+            <% } else if(file.fileType == 'web') { %>
+            language
+            <% } else if(file.fileType == 'text') { %>
+            description
+            <% } else if(file.fileType == 'document') { %>
+            assignment
+            <% } else if(file.fileType == 'executable') { %>
+            build
+            <% } else if(file.fileType == 'compressed') { %>
+            archive
+            <% } else { %>
+            grade
+            <% } %>
+          </i>
+          <span class="title"><b><%= file.fileName %></b></span>
+          <p>( <%= file.size %> )</p>
+          <a href="#" class="secondary-content"><i class="material-icons margin-top-12px">grade</i></a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</center>
+</body>
+</html>

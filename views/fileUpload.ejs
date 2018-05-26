@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Files</title>
+  <% include templates/includes.ejs %>
+</head>
+<body>
+<center>
+  <% include templates/nav.ejs %>
+  <% include templates/loading.ejs %>
+  <h3>Welcome to ByteDump</h3>
+  <br/>
+  <div class="row">
+    <div class="row">
+      <div class="input-field col s2"></div>
+      <div class="input-field col s8">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input id="file" type="file" name="uploads[]" multiple="multiple"></br>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Product Image">
+          </div>
+        </div>
+      </div>
+      <div class="input-field col s2"></div>
+    </div>
+    <div class="row">
+      <div class="input-field col s2"></div>
+      <div class="input-field col s8">
+        <button class="btn waves-effect waves-light" onclick="validation();">Submit</button>
+      </div>
+      <div class="input-field col s2"></div>
+    </div>
+  </div>
+</center>
+</body>
+</html>
